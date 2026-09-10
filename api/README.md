@@ -99,7 +99,7 @@ Create a separate Vercel project for the API:
 - Add `DATABASE_URL` in the Vercel environment variables
 - Deploy
 
-The function is located at `api/index.ts` relative to that project root, so the deployed API URL will be:
+The catch-all function is located at `api/[[...path]].ts` relative to that project root, so the deployed API URL will be:
 
 ```text
 https://your-hockey-card-api.vercel.app/api/players?search=hyman
