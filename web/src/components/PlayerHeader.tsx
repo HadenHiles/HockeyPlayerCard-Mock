@@ -10,11 +10,18 @@ function PlayerHeader({ playerData }: PlayerHeaderProps) {
     <header className={styles.header}>
       <div className={styles.logoOrbit} />
       <div className={styles.portraitFrame}>
-        <img
-          src={playerData.imageUrl}
-          alt={`${playerData.firstName} ${playerData.lastName}`}
-          className={styles.portrait}
-        />
+        {playerData.imageUrl ? (
+          <img
+            src={playerData.imageUrl}
+            alt={`${playerData.firstName} ${playerData.lastName}`}
+            className={styles.portrait}
+          />
+        ) : (
+          <span className={styles.portraitFallback}>
+            {playerData.firstName[0]}
+            {playerData.lastName[0]}
+          </span>
+        )}
       </div>
 
       <div className="relative z-2 flex items-start justify-between gap-4">
