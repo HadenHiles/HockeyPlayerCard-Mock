@@ -1,0 +1,71 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Logs and runtime files
+*.log
+logs/
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Node.js, Hono, and package managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.npm/
+.yarn/
+.pnpm-store/
+*.tgz
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Vite, React, TypeScript, and Tailwind builds
+dist/
+dist-ssr/
+.vite/
+*.local
+*.tsbuildinfo
+.cache/
+.parcel-cache/
+.turbo/
+
+# Local PostgreSQL data and backups
+pgdata/
+postgres-data/
+database/data/
+*.dump
+*.backup
+*.bak
+
+# Coverage and test output
+coverage/
+.nyc_output/
+test-results/
+
+# IDE and OS metadata
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
