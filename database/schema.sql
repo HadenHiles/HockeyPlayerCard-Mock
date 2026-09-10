@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS players (
   id SERIAL PRIMARY KEY,
   first_name TEXT NOT NULL,
   last_name TEXT NOT NULL,
+  image_url TEXT,
   jersey_number INTEGER NOT NULL,
   position VARCHAR(5) NOT NULL,
   team_id INTEGER REFERENCES teams(id)

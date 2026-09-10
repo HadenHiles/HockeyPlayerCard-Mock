@@ -19,7 +19,7 @@ playerRoutes.get("/players", async (context) => {
     );
   }
 
-  const searchTerm = `%${query.data.search}%`;
+  const searchTerm = query.data.search ? `%${query.data.search}%` : "%";
   const result = await databasePool.query(
     `
       SELECT
@@ -27,7 +27,7 @@ playerRoutes.get("/players", async (context) => {
         players.id AS card_number,
         players.first_name,
         players.last_name,
-        NULL::text AS image_url,
+        players.image_url,
         players.jersey_number,
         players.position,
         teams.name AS team_name,
@@ -46,7 +46,7 @@ playerRoutes.get("/players", async (context) => {
          OR players.first_name ILIKE $1
          OR players.last_name ILIKE $1
       ORDER BY players.last_name, players.first_name
-      LIMIT 8
+      LIMIT 100
     `,
     [searchTerm],
   );

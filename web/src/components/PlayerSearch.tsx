@@ -4,6 +4,7 @@ import styles from "./PlayerSearch.module.css";
 
 type PlayerSearchProps = {
   onSelect: (player: PlayerData) => void;
+  showPlayerList: boolean;
 };
 
 const productionApiUrl = "https://hockey-player-card-api.vercel.app";
@@ -11,17 +12,14 @@ const apiBaseUrl = import.meta.env.DEV
   ? (import.meta.env.VITE_API_URL ?? "")
   : productionApiUrl;
 
-function PlayerSearch({ onSelect }: PlayerSearchProps) {
+function PlayerSearch({ onSelect, showPlayerList }: PlayerSearchProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState<PlayerData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
   useEffect(() => {
     const trimmedSearch = searchTerm.trim();
-
-    if (!trimmedSearch) {
-      return;
-    }
 
     const abortController = new AbortController();
     const searchPlayers = async () => {
@@ -29,7 +27,7 @@ function PlayerSearch({ onSelect }: PlayerSearchProps) {
 
       try {
         const response = await fetch(
-          `${apiBaseUrl}/api/players?search=${encodeURIComponent(trimmedSearch)}`,
+          `${apiBaseUrl}/api/players${trimmedSearch ? `?search=${encodeURIComponent(trimmedSearch)}` : ""}`,
           { signal: abortController.signal },
         );
 
@@ -59,10 +57,12 @@ function PlayerSearch({ onSelect }: PlayerSearchProps) {
   function selectPlayer(player: PlayerData) {
     setSearchTerm(`${player.firstName} ${player.lastName}`);
     setSuggestions([]);
+    setIsSelected(true);
     onSelect(player);
   }
 
-  const visibleSuggestions = searchTerm.trim() ? suggestions : [];
+  const visibleSuggestions =
+    !isSelected && (showPlayerList || searchTerm.trim()) ? suggestions : [];
 
   return (
     <div className={styles.search}>
@@ -76,13 +76,19 @@ function PlayerSearch({ onSelect }: PlayerSearchProps) {
           value={searchTerm}
           placeholder="Search players"
           aria-label="Search players"
-          onChange={(event) => setSearchTerm(event.target.value)}
+          onChange={(event) => {
+            setIsSelected(false);
+            setSearchTerm(event.target.value);
+          }}
         />
         {isLoading && <span className={styles.meta}>Searching</span>}
       </div>
 
       {visibleSuggestions.length > 0 && (
-        <div className={styles.suggestions} role="listbox">
+        <div
+          className={showPlayerList ? styles.playerList : styles.suggestions}
+          role="listbox"
+        >
           {visibleSuggestions.map((player) => (
             <button
               className={styles.suggestion}

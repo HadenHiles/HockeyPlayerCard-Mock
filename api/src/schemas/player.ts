@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const playerSearchQuerySchema = z.object({
-  search: z.string().trim().min(1).max(80),
+  search: z.string().trim().min(1).max(80).optional(),
 });
 
 export const playerResponseSchema = z.object({
