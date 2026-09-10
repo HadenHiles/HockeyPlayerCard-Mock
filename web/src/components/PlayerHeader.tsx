@@ -42,7 +42,7 @@ function PlayerHeader({ playerData }: PlayerHeaderProps) {
       </div>
 
       <div className={styles.heroCopy}>
-        <p className={styles.position}>The B&apos;s • {playerData.position}</p>
+        <p className={styles.position}> • {playerData.position}</p>
         <h1 className={styles.name}>
           {playerData.firstName}
           <br />
