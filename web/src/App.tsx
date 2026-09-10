@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { PlayerData } from './models/player'
+import PlayerCard from './components/PlayerCard'
 import './App.css'
 
 function App() {
@@ -21,22 +22,7 @@ function App() {
   })
 
   return (
-    <>
-      <section id="center">
-        <pre>
-          {`Name: ${player.firstName} ${player.lastName}
-            Position: ${player.position}
-            Team: ${player.team.name} (${player.team.abbreviation})
-            Jersey Number: ${player.jerseyNumber}
-            Season: ${player.season.label}
-            Games Played: ${player.season.gamesPlayed}
-            Goals: ${player.season.goals}
-            Assists: ${player.season.assists}
-            Points: ${player.season.points}
-            Penalty Minutes: ${player.season.penaltyMinutes}`}
-        </pre>
-      </section>
-    </>
+    PlayerCard({playerData: player})
   )
 }
 
