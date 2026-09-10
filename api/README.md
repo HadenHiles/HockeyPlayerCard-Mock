@@ -1,6 +1,29 @@
 # Hockey Card API Database
 
-The API database uses PostgreSQL and the `pg` client.
+The API uses Hono on Node.js, Zod for runtime validation and inferred types, and PostgreSQL through the `pg` client.
+
+## API setup
+
+Start the development server from this directory:
+
+```sh
+npm install
+npm run dev
+```
+
+The health check is available at:
+
+```text
+GET http://localhost:3000/health
+```
+
+It returns:
+
+```json
+{"status":"ok"}
+```
+
+Run the typed API build with `npm run build`.
 
 ## Local setup
 
@@ -69,4 +92,4 @@ rm .env.vercel
 
 The frontend lives in `web`, so configure the Vercel project's root directory as `web`. Do not run the database seed as the frontend build command. The seed is a database operation, not a frontend build step.
 
-The repository does not yet contain a Hono/Vercel API entrypoint. When one is added, keep the PostgreSQL client in server-side code and read `process.env.DATABASE_URL` there. The hosted database only needs to be seeded once; the lock and populated-database guard make an explicitly configured deployment seed safe to repeat.
+The API entrypoint is now in `src/server.ts`, with the Hono app exported from `src/app.ts`. The current Vercel project should remain rooted at `web` for the frontend; deploy the API separately or add a Vercel serverless adapter when you are ready to expose it through the same project.
