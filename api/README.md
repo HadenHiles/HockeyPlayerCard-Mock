@@ -123,7 +123,7 @@ Create or update a second Vercel project:
 
 The frontend uses the local Vite proxy only when `VITE_API_URL` is empty. Do not run the database seed as the frontend build command.
 
-The API entrypoint is `src/server.ts` for local Node development, while `api/index.ts` is the Vercel function entrypoint relative to the API project root.
+The API entrypoint is `src/server.ts` for local Node development, while `api/[[...path]].ts` is the Vercel function entrypoint relative to the API project root. Do not set the Vercel API project's Root Directory to the repository root: that causes Vercel to treat `src/app.ts` and other internal modules as serverless functions, producing invalid-export errors.
 
 ## Player search
 
