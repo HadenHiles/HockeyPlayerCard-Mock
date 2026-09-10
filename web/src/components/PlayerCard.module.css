@@ -1,0 +1,274 @@
+:root {
+  --card-yellow: #fec307;
+  --card-charcoal: #292a2d;
+  --card-paper: #f4f0e7;
+  --card-muted: rgb(41 42 45 / 50%);
+}
+
+.page {
+  background:
+    linear-gradient(rgb(41 42 45 / 92%), rgb(41 42 45 / 92%)),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 8px,
+      rgb(255 255 255 / 3.5%) 8px 9px
+    );
+}
+
+.card {
+  overflow: hidden;
+  border: 1px solid rgb(254 195 7 / 35%);
+  border-radius: 2rem;
+  background: var(--card-paper);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 30%);
+  transition: transform 500ms ease;
+}
+
+.card:hover {
+  transform: translateY(-0.5rem);
+}
+
+.header {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem 1.5rem 1.75rem;
+  background: var(--card-charcoal);
+  color: var(--card-paper);
+}
+
+.header::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: var(--card-yellow);
+  content: "";
+}
+
+.logoOrbit {
+  position: absolute;
+  top: -5rem;
+  right: -2.5rem;
+  width: 14rem;
+  height: 14rem;
+  border: 18px solid rgb(254 195 7 / 20%);
+  border-radius: 50%;
+  transition: transform 700ms ease;
+}
+
+.portraitFrame {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 0;
+  z-index: 1;
+  width: 8rem;
+  height: 8rem;
+  overflow: hidden;
+  border: 3px solid var(--card-yellow);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+  background: var(--card-paper);
+  transform: translateY(0.25rem);
+}
+
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.card:hover .logoOrbit {
+  transform: scale(1.1);
+}
+
+.brandMark {
+  border: 2px solid var(--card-yellow);
+  border-radius: 50%;
+  background: var(--card-yellow);
+  box-shadow: 0 0 0 5px rgb(254 195 7 / 16%);
+  color: var(--card-charcoal);
+  font-size: 1.125rem;
+  font-weight: 900;
+}
+
+.eyebrow,
+.position,
+.statLabel,
+.metaLabel,
+.footer,
+.profileLabel,
+.cardNumber {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  color: var(--card-yellow);
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+}
+
+.profileLabel,
+.cardNumber {
+  color: rgb(255 255 255 / 55%);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+}
+
+.cardNumber {
+  text-align: right;
+  letter-spacing: 0.24em;
+}
+
+.heroCopy {
+  position: relative;
+  margin-top: 3.5rem;
+  text-align: left;
+}
+
+.position {
+  margin-bottom: 0.5rem;
+  color: var(--card-yellow);
+  font-size: 0.875rem;
+  letter-spacing: 0.3em;
+}
+
+.name {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--card-paper);
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.nameAccent {
+  color: var(--card-yellow);
+}
+
+.body {
+  position: relative;
+  padding: 1.5rem;
+  background-color: var(--card-paper);
+  background-image:
+    linear-gradient(rgb(41 42 45 / 3.5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(41 42 45 / 3.5%) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.jerseyNumber {
+  border: 4px solid var(--card-charcoal);
+  border-radius: 0.75rem;
+  background: var(--card-yellow);
+  box-shadow: 6px 6px 0 var(--card-charcoal);
+  color: var(--card-charcoal);
+  font-size: 3.75rem;
+  font-weight: 900;
+  line-height: 1;
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.card:hover .jerseyNumber {
+  box-shadow: 10px 10px 0 var(--card-charcoal);
+  transform: rotate(-3deg);
+}
+
+.metaLabel,
+.statLabel {
+  color: var(--card-muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+}
+
+.season {
+  margin: 0.25rem 0 0;
+  color: var(--card-charcoal);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.teamPosition {
+  margin: 0.5rem 0 0;
+  color: rgb(41 42 45 / 65%);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge {
+  border: 1px solid rgb(41 42 45 / 15%);
+  border-radius: 999px;
+  color: rgb(41 42 45 / 60%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+}
+
+.stats {
+  border-top: 1px solid rgb(41 42 45 / 15%);
+  border-bottom: 1px solid rgb(41 42 45 / 15%);
+}
+
+.statValue {
+  margin: 0;
+  color: var(--card-charcoal);
+  font-size: 1.875rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
+.statLabel {
+  margin: 0.25rem 0 0;
+}
+
+.footer {
+  color: var(--card-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+}
+
+.footerName {
+  color: var(--card-charcoal);
+  text-align: right;
+}
+
+@media (min-width: 640px) {
+  .header {
+    padding: 2rem 2.5rem 2.25rem;
+  }
+
+  .heroCopy {
+    margin-top: 4rem;
+  }
+
+  .portraitFrame {
+    right: 2.5rem;
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .name {
+    font-size: 4.5rem;
+  }
+
+  .body {
+    padding: 2.5rem;
+  }
+
+  .jerseyNumber {
+    font-size: 5rem;
+  }
+
+  .statValue {
+    font-size: 2.25rem;
+  }
+}
