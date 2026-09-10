@@ -93,3 +93,13 @@ rm .env.vercel
 The frontend lives in `web`, so configure the Vercel project's root directory as `web`. Do not run the database seed as the frontend build command. The seed is a database operation, not a frontend build step.
 
 The API entrypoint is now in `src/server.ts`, with the Hono app exported from `src/app.ts`. The current Vercel project should remain rooted at `web` for the frontend; deploy the API separately or add a Vercel serverless adapter when you are ready to expose it through the same project.
+
+## Player search
+
+Search former Leafs player data with:
+
+```text
+GET /api/players?search=hyman
+```
+
+The route returns up to eight matching players. Search uses PostgreSQL `ILIKE`, which is sufficient for the current seeded dataset; a search engine would add unnecessary infrastructure at this size.
