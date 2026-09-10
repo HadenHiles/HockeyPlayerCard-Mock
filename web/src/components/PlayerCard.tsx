@@ -2,7 +2,7 @@ import type { PlayerData } from '../models/player'
 import { useState } from 'react'
 
 function PlayerCard({ playerData }: { playerData: PlayerData }) {
-  const [player, setPlayer] = useState(playerData)
+  const [player] = useState(playerData)
 
     return (
         <>
@@ -19,17 +19,9 @@ function PlayerCard({ playerData }: { playerData: PlayerData }) {
             Points: ${player.season.points}
             Penalty Minutes: ${player.season.penaltyMinutes}`}
         </pre>
-        <button onClick={updateName}>Who is that?</button>
       </section>
         </>
     )
-
-    function updateName() {
-      setPlayer((currentPlayer) => ({
-        ...currentPlayer,
-        firstName: "Joe Momma",
-      }));
-    }
 }
 
 export default PlayerCard
