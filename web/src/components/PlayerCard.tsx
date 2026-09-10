@@ -25,13 +25,16 @@ function PlayerCard({ playerData, onPlayerSelect, onClose }: PlayerCardProps) {
           <PlayerHeader playerData={playerData} />
 
           <div className={styles.body}>
-            <button
-              className="mb-6 rounded-full border border-[#292a2d]/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#292a2d]/65 transition-colors hover:bg-[#fec307] hover:text-[#292a2d]"
-              type="button"
-              onClick={onClose}
-            >
-              Close card
-            </button>
+            <div className={styles.cardToolbar}>
+              <button
+                className={styles.closeButton}
+                type="button"
+                onClick={onClose}
+              >
+                <span aria-hidden="true">×</span>
+                Close list
+              </button>
+            </div>
             <PlayerStats playerData={playerData} />
           </div>
         </article>

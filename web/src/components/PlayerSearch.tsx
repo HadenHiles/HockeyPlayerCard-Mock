@@ -97,6 +97,18 @@ function PlayerSearch({ onSelect, showPlayerList }: PlayerSearchProps) {
               role="option"
               onClick={() => selectPlayer(player)}
             >
+              {player.imageUrl ? (
+                <img
+                  className={styles.suggestionImage}
+                  src={player.imageUrl}
+                  alt=""
+                />
+              ) : (
+                <span className={styles.suggestionFallback} aria-hidden="true">
+                  {player.firstName[0]}
+                  {player.lastName[0]}
+                </span>
+              )}
               <span className={styles.name}>
                 {player.firstName} {player.lastName}
               </span>

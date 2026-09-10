@@ -77,6 +77,31 @@
   text-align: left;
 }
 
+.suggestionImage,
+.suggestionFallback {
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+}
+
+.suggestionImage {
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  background: #fec307;
+}
+
+.suggestionFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fec307;
+  color: #292a2d;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
 .suggestion:hover,
 .suggestion:focus-visible {
   outline: 0;
@@ -84,6 +109,7 @@
 }
 
 .name {
+  flex: 1;
   font-weight: 800;
 }
 
