@@ -24,6 +24,10 @@
   transition: transform 500ms ease;
 }
 
+.cardShell {
+  position: relative;
+}
+
 .card:hover {
   transform: translateY(-0.5rem);
 }
@@ -173,23 +177,19 @@
   background-size: 28px 28px;
 }
 
-.cardToolbar {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1.25rem;
-}
-
 .closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   padding: 0.55rem 0.85rem;
   border: 1px solid rgb(41 42 45 / 20%);
   border-radius: 999px;
-  background: transparent;
-  color: rgb(41 42 45 / 70%);
+  background: var(--card-yellow);
+  color: var(--card-charcoal);
   cursor: pointer;
   font: inherit;
   font-size: 0.7rem;

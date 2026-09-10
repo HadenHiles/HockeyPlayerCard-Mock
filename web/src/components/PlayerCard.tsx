@@ -21,20 +21,21 @@ function PlayerCard({ playerData, onPlayerSelect, onClose }: PlayerCardProps) {
         showPlayerList={!playerData}
       />
       {playerData && (
-        <article className={`${styles.card} w-full max-w-3xl`}>
+        <article
+          className={`${styles.card} ${styles.cardShell} w-full max-w-3xl`}
+        >
+          <button
+            className={styles.closeButton}
+            type="button"
+            aria-label="Return to player list"
+            onClick={onClose}
+          >
+            <span aria-hidden="true">×</span>
+            Close list
+          </button>
           <PlayerHeader playerData={playerData} />
 
           <div className={styles.body}>
-            <div className={styles.cardToolbar}>
-              <button
-                className={styles.closeButton}
-                type="button"
-                onClick={onClose}
-              >
-                <span aria-hidden="true">×</span>
-                Close list
-              </button>
-            </div>
             <PlayerStats playerData={playerData} />
           </div>
         </article>
