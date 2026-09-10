@@ -18,7 +18,7 @@ export interface PlayerData {
   cardNumber: number;
   firstName: string;
   lastName: string;
-  imageUrl: string;
+  imageUrl?: string | null;
   jerseyNumber: number;
   position: string;
   team: Team;
