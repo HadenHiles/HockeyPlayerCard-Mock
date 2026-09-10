@@ -1,10 +1,10 @@
-CREATE TABLE teams (
+CREATE TABLE IF NOT EXISTS teams (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   abbreviation VARCHAR(5) NOT NULL
 );
 
-CREATE TABLE players (
+CREATE TABLE IF NOT EXISTS players (
   id SERIAL PRIMARY KEY,
   first_name TEXT NOT NULL,
   last_name TEXT NOT NULL,
@@ -13,12 +13,12 @@ CREATE TABLE players (
   team_id INTEGER REFERENCES teams(id)
 );
 
-CREATE TABLE seasons (
+CREATE TABLE IF NOT EXISTS seasons (
   id SERIAL PRIMARY KEY,
   label TEXT NOT NULL
 );
 
-CREATE TABLE player_season_stats (
+CREATE TABLE IF NOT EXISTS player_season_stats (
   player_id INTEGER REFERENCES players(id),
   season_id INTEGER REFERENCES seasons(id),
   games_played INTEGER NOT NULL DEFAULT 0,
