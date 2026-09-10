@@ -6,7 +6,8 @@ type PlayerSearchProps = {
   onSelect: (player: PlayerData) => void;
 };
 
-const apiBaseUrl = import.meta.env.VITE_API_URL ?? "";
+const apiBaseUrl =
+  import.meta.env.VITE_API_URL ?? "https://hockey-player-card-api.vercel.app";
 
 function PlayerSearch({ onSelect }: PlayerSearchProps) {
   const [searchTerm, setSearchTerm] = useState("");
