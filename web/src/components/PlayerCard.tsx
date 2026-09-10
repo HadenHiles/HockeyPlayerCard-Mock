@@ -15,7 +15,11 @@ function PlayerCard({ playerData, onPlayerSelect, onClose }: PlayerCardProps) {
     <main
       className={`${styles.page} flex min-h-screen flex-col items-center justify-center px-4 py-10 sm:px-8`}
     >
-      <PlayerSearch onSelect={onPlayerSelect} showPlayerList={!playerData} />
+      <PlayerSearch
+        key={playerData?.id ?? "player-directory"}
+        onSelect={onPlayerSelect}
+        showPlayerList={!playerData}
+      />
       {playerData && (
         <article className={`${styles.card} w-full max-w-3xl`}>
           <PlayerHeader playerData={playerData} />
