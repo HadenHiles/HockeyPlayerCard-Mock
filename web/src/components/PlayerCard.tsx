@@ -31,7 +31,7 @@ function PlayerCard({ playerData, onPlayerSelect, onClose }: PlayerCardProps) {
             onClick={onClose}
           >
             <span aria-hidden="true">×</span>
-            Close list
+            Close
           </button>
           <PlayerHeader playerData={playerData} />
 
