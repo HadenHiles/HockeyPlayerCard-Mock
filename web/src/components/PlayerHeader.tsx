@@ -17,7 +17,7 @@ function PlayerHeader({ playerData }: PlayerHeaderProps) {
         />
       </div>
 
-      <div className="relative z-[2] flex items-start justify-between gap-4">
+      <div className="relative z-2 flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
           <div
             className={`${styles.brandMark} flex size-12 items-center justify-center`}
