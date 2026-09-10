@@ -6,6 +6,8 @@ type PlayerSearchProps = {
   onSelect: (player: PlayerData) => void;
 };
 
+const apiBaseUrl = import.meta.env.VITE_API_URL ?? "";
+
 function PlayerSearch({ onSelect }: PlayerSearchProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState<PlayerData[]>([]);
@@ -24,7 +26,7 @@ function PlayerSearch({ onSelect }: PlayerSearchProps) {
 
       try {
         const response = await fetch(
-          `/api/players?search=${encodeURIComponent(trimmedSearch)}`,
+          `${apiBaseUrl}/api/players?search=${encodeURIComponent(trimmedSearch)}`,
           { signal: abortController.signal },
         );
 

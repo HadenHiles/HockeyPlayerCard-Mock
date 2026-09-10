@@ -1,5 +1,20 @@
 # React + TypeScript + Vite
 
+## Deployment
+
+The frontend and API deploy as separate Vercel projects:
+
+- Frontend root: `web`
+- API root: `api`
+
+Set `VITE_API_URL` in the frontend Vercel project to the deployed API URL, for example:
+
+```text
+VITE_API_URL=https://your-hockey-card-api.vercel.app
+```
+
+Local development leaves `VITE_API_URL` empty and uses the Vite proxy to `http://localhost:3000`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

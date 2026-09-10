@@ -88,11 +88,42 @@ rm .env.vercel
 
 `.env.vercel` is covered by the repository's `.env.*` ignore rule.
 
-### 4. Deploy the application
+### 4. Deploy the API to Vercel
 
-The frontend lives in `web`, so configure the Vercel project's root directory as `web`. Do not run the database seed as the frontend build command. The seed is a database operation, not a frontend build step.
+Create a separate Vercel project for the API:
 
-The API entrypoint is now in `src/server.ts`, with the Hono app exported from `src/app.ts`. The current Vercel project should remain rooted at `web` for the frontend; deploy the API separately or add a Vercel serverless adapter when you are ready to expose it through the same project.
+- Import the same Git repository
+- Set **Root Directory** to `api`
+- Leave the framework as **Other**
+- Set the build command to `npm run build`
+- Add `DATABASE_URL` in the Vercel environment variables
+- Deploy
+
+The function is located at `api/index.ts` relative to that project root, so the deployed API URL will be:
+
+```text
+https://your-hockey-card-api.vercel.app/api/players?search=hyman
+```
+
+Verify it before updating the frontend:
+
+```sh
+curl "https://your-hockey-card-api.vercel.app/health"
+curl "https://your-hockey-card-api.vercel.app/api/players?search=hyman"
+```
+
+### 5. Deploy the frontend to Vercel
+
+Create or update a second Vercel project:
+
+- Import the same Git repository
+- Set **Root Directory** to `web`
+- Set `VITE_API_URL` to `https://your-hockey-card-api.vercel.app`
+- Deploy
+
+The frontend uses the local Vite proxy only when `VITE_API_URL` is empty. Do not run the database seed as the frontend build command.
+
+The API entrypoint is `src/server.ts` for local Node development, while `api/index.ts` is the Vercel function entrypoint relative to the API project root.
 
 ## Player search
 
